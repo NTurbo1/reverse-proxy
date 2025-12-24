@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/nturbo1/reverse-proxy/configs"
+	"github.com/nturbo1/reverse-proxy/internal/configs"
 	"github.com/nturbo1/reverse-proxy/internal/log"
 )
 
@@ -14,7 +14,6 @@ func main() {
 		return
 	}
 
-	fmt.Println("Initializing the logger...")
 	log.InitLogger(appConfigs.LogLevel)
 	log.Info("Configurations: %s", appConfigs)
 }

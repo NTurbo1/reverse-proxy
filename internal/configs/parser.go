@@ -4,6 +4,7 @@ import (
 	"os"
 	"fmt"
 	"encoding/json"
+	"time"
 )
 
 func parseAppConfigs(appConfigFile string, appConfigs *AppConfigs) error {
@@ -18,6 +19,8 @@ func parseAppConfigs(appConfigFile string, appConfigs *AppConfigs) error {
 		fmt.Printf("Failed to json unmarshal the bytes of file '%s'\n", appConfigFile)
 		return err
 	}
+
+	appConfigs.Server.Timeout *= time.Millisecond
 
 	return nil
 } 

@@ -10,15 +10,21 @@ import (
 
 type AppConfigs struct {
 	LogLevel string `json:"logLevel"`
+	RoutesMasterFile string `json:"routesMasterFile"`
 	Server ServerConfigs `json:"server"`
 }
 func (ac AppConfigs) String() string {
-	return fmt.Sprintf("{logLevel: %s, server: %s}", ac.LogLevel, ac.Server)
+	return fmt.Sprintf(
+		"{logLevel: %s, routesMasterFile: %s, server: %s}", 
+		ac.LogLevel,
+		ac.RoutesMasterFile,
+		ac.Server,
+	)
 }
 
 type ServerConfigs struct {
 	Port int64 `json:"port"`
-	Timeout time.Duration `json:"timeout"`
+	Timeout time.Duration `json:"timeout"` // Expected to be in milliseconds
 }
 func (sc ServerConfigs) String() string {
 	return fmt.Sprintf("{port: %v, timeout: %s}", sc.Port, sc.Timeout)
@@ -31,6 +37,7 @@ func InitAppConfigs() (*AppConfigs, error) {
 	if level, ok := envVars[EnvVarReverseProxyLogLevel.String()]; ok {
 		logLevel = level
 	}
+	routesMasterFile := envVars[EnvVarRoutesConfigsMasterFile.String()]
 	var serverPort int64 = 8080
 	if portStr, ok := envVars[EnvVarPort.String()]; ok {
 		port, err := strconv.ParseInt(portStr, 10, 64)
@@ -44,6 +51,7 @@ func InitAppConfigs() (*AppConfigs, error) {
 
 	appConfigs := &AppConfigs{
 		LogLevel: logLevel,
+		RoutesMasterFile: routesMasterFile,
 		Server: ServerConfigs{
 			Port: serverPort,
 			Timeout: 10 * time.Millisecond,
