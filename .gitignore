@@ -33,3 +33,7 @@ go.work.sum
 
 # Distributions, packaging, build components
 dist
+
+# Runtime config files
+app.configs.json
+routes.master.json
