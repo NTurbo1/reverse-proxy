@@ -19,7 +19,11 @@ func Start() error {
 	log.Debug("Configurations: %s", appConfigs)
 	log.Debug("Environment: %s", env)
 	
-	server := server.NewServer(appConfigs, env)
+	server, err := server.NewServer(appConfigs, env)
+	if err != nil {
+		return err
+	}
+
 	log.Info("Listening on port %d...", appConfigs.Server.Port)
 	err = server.ListenAndServe()
 	log.Fatal("%s", err)

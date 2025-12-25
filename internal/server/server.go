@@ -12,12 +12,16 @@ import (
 
 func NewServer(
 	appConfigs *configs.AppConfigs, env *configs.Environment,
-) *http.Server {
+) (*http.Server, error) {
 
 	mux := http.NewServeMux()
 	serverHandler := NewServerHandler(mux)
 	log.Debug("Setting up the routes...")
-	routing.SetUpRouteHandlers(appConfigs, env, mux)
+	err := routing.SetUpRouteHandlers(appConfigs, env, mux)
+	if err != nil {
+		log.Error("Failed to set up route handlers due to: %s", err)
+		return nil, err
+	}
 
 	return &http.Server{
 		Addr:           fmt.Sprintf(":%d", appConfigs.Server.Port),
@@ -25,7 +29,7 @@ func NewServer(
 		ReadTimeout:    appConfigs.Server.Timeout,
 		WriteTimeout:   appConfigs.Server.Timeout,
 		MaxHeaderBytes: 1 << 20,
-	}
+	}, nil
 }
 
 func NewServerHandler(mux *http.ServeMux) http.Handler {
