@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/nturbo1/reverse-proxy/internal/configs"
-	"github.com/nturbo1/reverse-proxy/internal/middleware"
-	"github.com/nturbo1/reverse-proxy/internal/routing"
-	"github.com/nturbo1/reverse-proxy/internal/log"
+	"github.com/nturbo1/apigtw/internal/configs"
+	"github.com/nturbo1/apigtw/internal/middleware"
+	"github.com/nturbo1/apigtw/internal/routing"
+	"github.com/nturbo1/apigtw/internal/log"
 )
 
 func NewServer(

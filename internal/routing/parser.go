@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"os"
 
-	"github.com/nturbo1/reverse-proxy/internal/configs"
-	"github.com/nturbo1/reverse-proxy/internal/log"
+	"github.com/nturbo1/apigtw/internal/configs"
+	"github.com/nturbo1/apigtw/internal/log"
 )
 
 func parseRoutes(appConfigs *configs.AppConfigs) ([]*Route, error) {

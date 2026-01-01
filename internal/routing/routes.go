@@ -5,8 +5,8 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/nturbo1/reverse-proxy/internal/log"
-	"github.com/nturbo1/reverse-proxy/internal/configs"
+	"github.com/nturbo1/apigtw/internal/log"
+	"github.com/nturbo1/apigtw/internal/configs"
 )
 
 // Routes struct represents the configurations parsed from the master file of the routes configurations.

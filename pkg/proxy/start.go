@@ -3,9 +3,9 @@ package proxy
 import (
 	"fmt"
 
-	"github.com/nturbo1/reverse-proxy/internal/configs"
-	"github.com/nturbo1/reverse-proxy/internal/log"
-	"github.com/nturbo1/reverse-proxy/internal/server"
+	"github.com/nturbo1/apigtw/internal/configs"
+	"github.com/nturbo1/apigtw/internal/log"
+	"github.com/nturbo1/apigtw/internal/server"
 )
 
 func Start() error {

@@ -5,7 +5,7 @@ import (
 	"time"
 	"strconv"
 
-	"github.com/nturbo1/reverse-proxy/internal/log"
+	"github.com/nturbo1/apigtw/internal/log"
 )
 
 type AppConfigs struct {

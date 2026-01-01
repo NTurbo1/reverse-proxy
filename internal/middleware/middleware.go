@@ -3,7 +3,7 @@ package middleware
 import (
 	"net/http"
 
-	"github.com/nturbo1/reverse-proxy/internal/log"
+	"github.com/nturbo1/apigtw/internal/log"
 )
 
 func AuthMiddleware(next http.Handler) http.Handler {
